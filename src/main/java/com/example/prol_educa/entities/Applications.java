@@ -75,7 +75,6 @@ public class Applications {
 
 	public Applications() {
 	}
-    
-    
+        
 }
 
