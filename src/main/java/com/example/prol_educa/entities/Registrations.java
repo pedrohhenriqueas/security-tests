@@ -33,4 +33,53 @@ public class Registrations {
     
     @Column(name = "status")
     private String status;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public ScholarshipHolders getScholarshipHolders() {
+		return scholarshipHolders;
+	}
+
+	public void setScholarshipHolders(ScholarshipHolders scholarshipHolders) {
+		this.scholarshipHolders = scholarshipHolders;
+	}
+
+	public Courses getCourses() {
+		return courses;
+	}
+
+	public void setCourses(Courses courses) {
+		this.courses = courses;
+	}
+
+	public Date getRegistration_date() {
+		return registration_date;
+	}
+
+	public void setRegistration_date(Date registration_date) {
+		this.registration_date = registration_date;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Registrations(ScholarshipHolders scholarshipHolders, Courses courses, Date registration_date,
+			String status) {
+		this.scholarshipHolders = scholarshipHolders;
+		this.courses = courses;
+		this.registration_date = registration_date;
+		this.status = status;
+	}
+
 }

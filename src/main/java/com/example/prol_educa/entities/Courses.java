@@ -139,8 +139,6 @@ public class Courses {
 		this.institutions_id = institutions_id;
 	}
 
-	
-	
 	public Courses(Institutions institutions_id, String name, Integer vacancies, BigDecimal percentage_scholarship,
 			BigDecimal original_value, BigDecimal discount_value, String shift, String image_url,
 			BigDecimal discount_entrance, boolean status) {

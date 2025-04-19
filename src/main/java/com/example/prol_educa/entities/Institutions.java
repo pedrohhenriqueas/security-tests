@@ -58,8 +58,6 @@ public class Institutions {
     @Column(name = "status")
     private boolean status;
     
-    
-    
 	public Institutions(String name, String street, String number, String complement, String neighborhood, String city,
 			String state, String cep, String name_responsible, String cell_responsible, String email_responsible,
 			String type, String url_image, String password, boolean status) {
