@@ -34,12 +34,12 @@ public class InstitutionsController {
 	
 	@GetMapping
 	public ResponseEntity<List<Institutions>> findAll(){
-		return service.findAll();
+		return ResponseEntity.ok(service.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public Institutions findById(@PathVariable("id") Integer id) throws Exception{
-		return service.findById(id);
+	public ResponseEntity<Institutions> findById(@PathVariable("id") Integer id) throws Exception{
+		return ResponseEntity.ok(service.findById(id));
 	}	
 	
 	@PutMapping("/{id}")

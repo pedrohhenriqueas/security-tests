@@ -38,10 +38,8 @@ public class InstitutionsService {
 		repository.save(institution);
 	}
 	
-	public ResponseEntity<List<Institutions>> findAll() {
-		List<Institutions> institutuions = repository.findAll();
-		
-		return ResponseEntity.ok(institutuions);
+	public List<Institutions> findAll() {
+		return repository.findAll();
 	}
 	
 	public Institutions findById(Integer id) throws Exception {
