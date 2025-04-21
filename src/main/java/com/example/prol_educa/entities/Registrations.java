@@ -82,4 +82,7 @@ public class Registrations {
 		this.status = status;
 	}
 
+	public Registrations() {
+	}
+
 }
