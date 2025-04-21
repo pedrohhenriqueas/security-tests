@@ -1,63 +1,20 @@
-package com.example.prol_educa.entities;
+package com.example.prol_educa.models;
 
 import java.math.BigDecimal;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "Cursos")
-public class Courses {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-	private Integer id;
-    
-    @ManyToOne
-    @JoinColumn(name = "instituicao_id")
-    private Institutions institutions_id;
-
-    @Column(name = "nome")
+public class CoursesDto {
+	
+	private Integer institutions_id;
     private String name;
-
-    @Column(name = "vagas")
     private Integer vacancies;
-
-    @Column(name = "bolsa_percentual")
     private BigDecimal percentage_scholarship;
-
-    @Column(name = "valor_original")
     private BigDecimal original_value;
-
-    @Column(name = "valor_desconto")
     private BigDecimal discount_value;
-
-    @Column(name = "turno")
     private String shift;
-
-    @Column(name = "imagem_url")
     private String image_url;
-
-    @Column(name = "desconto_entrada")
     private BigDecimal discount_entrance;
-
-    @Column(name = "status")
     private boolean status;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
@@ -131,15 +88,15 @@ public class Courses {
 		this.status = status;
 	}
 
-	public Institutions getInstitutions_id() {
+	public Integer getInstitutions_id() {
 		return institutions_id;
 	}
 
-	public void setInstitutions_id(Institutions institutions_id) {
+	public void setInstitutions_id(Integer institutions_id) {
 		this.institutions_id = institutions_id;
 	}
 
-	public Courses(Institutions institutions_id, String name, Integer vacancies, BigDecimal percentage_scholarship,
+	public CoursesDto(Integer institutions_id, String name, Integer vacancies, BigDecimal percentage_scholarship,
 			BigDecimal original_value, BigDecimal discount_value, String shift, String image_url,
 			BigDecimal discount_entrance, boolean status) {
 		this.institutions_id = institutions_id;
@@ -154,6 +111,6 @@ public class Courses {
 		this.status = status;
 	}
 
-	public Courses() {}
+	public CoursesDto() {}
 
 }

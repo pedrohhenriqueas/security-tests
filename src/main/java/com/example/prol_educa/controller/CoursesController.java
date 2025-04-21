@@ -1,6 +1,5 @@
 package com.example.prol_educa.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,43 +13,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.prol_educa.entities.Institutions;
-import com.example.prol_educa.models.InstitutionsDto;
-import com.example.prol_educa.service.InstitutionsService;
+import com.example.prol_educa.entities.Courses;
+import com.example.prol_educa.models.CoursesDto;
+import com.example.prol_educa.service.CoursesService;
 
 @RestController
-@RequestMapping("/institutions")
-public class InstitutionsController {
-	
-	@Autowired
-	public InstitutionsService service;
+@RequestMapping("/courses")
+public class CoursesController {
 
+	@Autowired
+	public CoursesService service;
+	
 	@PostMapping("/create")
-	public ResponseEntity<?> create(@RequestBody InstitutionsDto dto) {
+	public ResponseEntity<?> create(@RequestBody CoursesDto dto) throws Exception{
 		service.create(dto);
-		return ResponseEntity.ok("Cadastro da instituicao realizado com sucesso!");
+		return ResponseEntity.ok("Cadastro do curso feito com sucesso");
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Institutions>> findAll(){
+	public ResponseEntity<List<Courses>> findAll(){
 		return ResponseEntity.ok(service.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Institutions> findById(@PathVariable("id") Integer id) throws Exception{
+	public ResponseEntity<Courses> findById(@PathVariable("id") Integer id) throws Exception{
 		return ResponseEntity.ok(service.findById(id));
-	}	
+	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@PathVariable("id") Integer id,
-								@RequestBody InstitutionsDto dto) throws Exception {
+									 @RequestBody CoursesDto dto) throws Exception{
 		service.update(id, dto);
-		return ResponseEntity.ok("Instituição atualizada com sucesso");
+		return ResponseEntity.ok("Curso atualizado com sucesso");
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") Integer id){
 		service.delete(id);
-		return ResponseEntity.ok("Instituição deletada com sucesso");
+		return ResponseEntity.ok("Curso deletado com sucesso");
 	}
 }
