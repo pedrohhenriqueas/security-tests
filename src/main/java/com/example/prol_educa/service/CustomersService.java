@@ -1,5 +1,6 @@
 package com.example.prol_educa.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,25 @@ public class CustomersService {
 		}
 		
 		return customer.get();
+	}
+	
+	public List<Customers> findAll(){
+		return repository.findAll();
+	}
+	
+	public Customers update(Integer id, CustomersDto dto) throws Exception {
+		Customers customer = findById(id);
+		customer.setFull_name(dto.getFull_name());
+		customer.setEmail(dto.getEmail());
+		customer.setPhone(dto.getPhone());
+		customer.setCpf(dto.getCpf());
+		customer.setDate_of_birth(dto.getDate_of_birth());
+		customer.setStatus(dto.isStatus());
+		
+		return repository.save(customer);
+	}
+	
+	public void delete(Integer id) {
+		repository.deleteById(id);
 	}
 }
