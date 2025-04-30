@@ -18,11 +18,11 @@ public class CustomersService {
 	
 	public void create(CustomersDto dto) {
 		Customers customer = new Customers();
-		customer.setFull_name(dto.getFull_name());
+		customer.setFullName(dto.getFullName());
 		customer.setEmail(dto.getEmail());
 		customer.setPhone(dto.getPhone());
 		customer.setCpf(dto.getCpf());
-		customer.setDate_of_birth(dto.getDate_of_birth());
+		customer.setDate_of_birth(dto.getDateOfBirth());
 		customer.setStatus(dto.isStatus());
 		
 		repository.save(customer);
@@ -43,11 +43,11 @@ public class CustomersService {
 	
 	public Customers update(Integer id, CustomersDto dto) throws Exception {
 		Customers customer = findById(id);
-		customer.setFull_name(dto.getFull_name());
+		customer.setFullName(dto.getFullName());
 		customer.setEmail(dto.getEmail());
 		customer.setPhone(dto.getPhone());
 		customer.setCpf(dto.getCpf());
-		customer.setDate_of_birth(dto.getDate_of_birth());
+		customer.setDate_of_birth(dto.getDateOfBirth());
 		customer.setStatus(dto.isStatus());
 		
 		return repository.save(customer);

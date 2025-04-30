@@ -19,7 +19,7 @@ public class Customers {
 	private Integer id;
     
     @Column(name = "nome_completo")
-    private String full_name;
+    private String fullName;
 
     @Column(name = "email")
     private String email;
@@ -31,7 +31,7 @@ public class Customers {
     private String cpf;
 
     @Column(name = "data_nascimento")
-    private Date date_of_birth;
+    private Date dateOfBirth;
 
     @Column(name = "status")
     private boolean status;
@@ -44,12 +44,12 @@ public class Customers {
 		this.id = id;
 	}
 
-	public String getFull_name() {
-		return full_name;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setFull_name(String full_name) {
-		this.full_name = full_name;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getEmail() {
@@ -76,12 +76,12 @@ public class Customers {
 		this.cpf = cpf;
 	}
 
-	public Date getDate_of_birth() {
-		return date_of_birth;
+	public Date getDateOfbirth() {
+		return dateOfBirth;
 	}
 
-	public void setDate_of_birth(Date date_of_birth) {
-		this.date_of_birth = date_of_birth;
+	public void setDate_of_birth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public boolean isStatus() {
@@ -92,12 +92,12 @@ public class Customers {
 		this.status = status;
 	}
 
-	public Customers(String full_name, String email, String phone, String cpf, Date date_of_birth, boolean status) {
-		this.full_name = full_name;
+	public Customers(String fullName, String email, String phone, String cpf, Date dateOfBirth, boolean status) {
+		this.fullName = fullName;
 		this.email = email;
 		this.phone = phone;
 		this.cpf = cpf;
-		this.date_of_birth = date_of_birth;
+		this.dateOfBirth = dateOfBirth;
 		this.status = status;
 	}
 

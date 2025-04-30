@@ -22,17 +22,17 @@ public class CoursesService {
 	public InstitutionsService institutionsService;
 	
 	public void create(CoursesDto dto) throws Exception {
-		Institutions institution = institutionsService.findById(dto.getInstitutions_id());
+		Institutions institution = institutionsService.findById(dto.getInstitutionsId());
 		Courses course = new Courses();
 		course.setInstitutions(institution);
 		course.setName(dto.getName());
 		course.setVacancies(dto.getVacancies());
-		course.setPercentageScholarship(dto.getPercentage_scholarship());
-		course.setOriginalValue(dto.getOriginal_value());
-		course.setDiscountValue(dto.getDiscount_value());
+		course.setPercentageScholarship(dto.getPercentageScholarship());
+		course.setOriginalValue(dto.getOriginalValue());
+		course.setDiscountValue(dto.getDiscountValue());
 		course.setShift(dto.getShift());
-		course.setImage_url(dto.getImage_url());
-		course.setDiscountEntrance(dto.getDiscount_entrance());
+		course.setImageUrl(dto.getImageUrl());
+		course.setDiscountEntrance(dto.getDiscountEntrance());
 		course.setStatus(dto.isStatus());
 		
 		repository.save(course);
@@ -52,17 +52,17 @@ public class CoursesService {
 	}
 	
 	public Courses update(Integer id, CoursesDto dto) throws Exception {
-		Institutions institution = institutionsService.findById(dto.getInstitutions_id());
+		Institutions institution = institutionsService.findById(dto.getInstitutionsId());
 		Courses course = findById(id);
 		course.setInstitutions(institution);
 		course.setName(dto.getName());
 		course.setVacancies(dto.getVacancies());
-		course.setPercentageScholarship(dto.getPercentage_scholarship());
-		course.setOriginalValue(dto.getOriginal_value());
-		course.setDiscountValue(dto.getDiscount_value());
+		course.setPercentageScholarship(dto.getPercentageScholarship());
+		course.setOriginalValue(dto.getOriginalValue());
+		course.setDiscountValue(dto.getDiscountValue());
 		course.setShift(dto.getShift());
-		course.setImage_url(dto.getImage_url());
-		course.setDiscountEntrance(dto.getDiscount_entrance());
+		course.setImageUrl(dto.getImageUrl());
+		course.setDiscountEntrance(dto.getDiscountEntrance());
 		course.setStatus(dto.isStatus());
 		
 		return repository.save(course);

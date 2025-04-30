@@ -4,17 +4,24 @@ import java.math.BigDecimal;
 
 public class CoursesDto {
 	
-	private Integer institutions_id;
+	private Integer institutionsId;
     private String name;
     private Integer vacancies;
-    private BigDecimal percentage_scholarship;
-    private BigDecimal original_value;
-    private BigDecimal discount_value;
+    private BigDecimal percentageScholarship;
+    private BigDecimal originalValue;
+    private BigDecimal discountValue;
     private String shift;
-    private String image_url;
-    private BigDecimal discount_entrance;
+    private String imageUrl;
+    private BigDecimal discountEntrance;
     private boolean status;
+    
+	public Integer getInstitutionsId() {
+		return institutionsId;
+	}
 
+	public void setInstitutionsId(Integer institutionsId) {
+		this.institutionsId = institutionsId;
+	}
 
 	public String getName() {
 		return name;
@@ -32,28 +39,28 @@ public class CoursesDto {
 		this.vacancies = vacancies;
 	}
 
-	public BigDecimal getPercentage_scholarship() {
-		return percentage_scholarship;
+	public BigDecimal getPercentageScholarship() {
+		return percentageScholarship;
 	}
 
-	public void setPercentage_scholarship(BigDecimal percentage_scholarship) {
-		this.percentage_scholarship = percentage_scholarship;
+	public void setPercentageScholarship(BigDecimal percentageScholarship) {
+		this.percentageScholarship = percentageScholarship;
 	}
 
-	public BigDecimal getOriginal_value() {
-		return original_value;
+	public BigDecimal getOriginalValue() {
+		return originalValue;
 	}
 
-	public void setOriginal_value(BigDecimal original_value) {
-		this.original_value = original_value;
+	public void setOriginalValue(BigDecimal originalValue) {
+		this.originalValue = originalValue;
 	}
 
-	public BigDecimal getDiscount_value() {
-		return discount_value;
+	public BigDecimal getDiscountValue() {
+		return discountValue;
 	}
 
-	public void setDiscount_value(BigDecimal discount_value) {
-		this.discount_value = discount_value;
+	public void setDiscountValue(BigDecimal discountValue) {
+		this.discountValue = discountValue;
 	}
 
 	public String getShift() {
@@ -64,20 +71,20 @@ public class CoursesDto {
 		this.shift = shift;
 	}
 
-	public String getImage_url() {
-		return image_url;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setImage_url(String image_url) {
-		this.image_url = image_url;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
-	public BigDecimal getDiscount_entrance() {
-		return discount_entrance;
+	public BigDecimal getDiscountEntrance() {
+		return discountEntrance;
 	}
 
-	public void setDiscount_entrance(BigDecimal discount_entrance) {
-		this.discount_entrance = discount_entrance;
+	public void setDiscountEntrance(BigDecimal discountEntrance) {
+		this.discountEntrance = discountEntrance;
 	}
 
 	public boolean isStatus() {
@@ -87,27 +94,19 @@ public class CoursesDto {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-
-	public Integer getInstitutions_id() {
-		return institutions_id;
-	}
-
-	public void setInstitutions_id(Integer institutions_id) {
-		this.institutions_id = institutions_id;
-	}
-
-	public CoursesDto(Integer institutions_id, String name, Integer vacancies, BigDecimal percentage_scholarship,
-			BigDecimal original_value, BigDecimal discount_value, String shift, String image_url,
-			BigDecimal discount_entrance, boolean status) {
-		this.institutions_id = institutions_id;
+	
+	public CoursesDto(Integer institutionsId, String name, Integer vacancies, BigDecimal percentageScholarship,
+			BigDecimal originalValue, BigDecimal discountValue, String shift, String imageUrl,
+			BigDecimal discountEntrance, boolean status) {
+		this.institutionsId = institutionsId;
 		this.name = name;
 		this.vacancies = vacancies;
-		this.percentage_scholarship = percentage_scholarship;
-		this.original_value = original_value;
-		this.discount_value = discount_value;
+		this.percentageScholarship = percentageScholarship;
+		this.originalValue = originalValue;
+		this.discountValue = discountValue;
 		this.shift = shift;
-		this.image_url = image_url;
-		this.discount_entrance = discount_entrance;
+		this.imageUrl = imageUrl;
+		this.discountEntrance = discountEntrance;
 		this.status = status;
 	}
 

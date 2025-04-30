@@ -25,10 +25,10 @@ public class ScholarshipHolders {
     private Customers customers;
 
     @Column(name = "nome_completo")
-    private String full_name;
+    private String fullName;
 
     @Column(name = "data_nascimento")
-    private Date date_of_birth;
+    private Date dateOfBirth;
 
     @Column(name = "necessidades")
     private boolean needs;
@@ -37,7 +37,18 @@ public class ScholarshipHolders {
     private String cpf;
 
     @Column(name = "raca_cor")
-    private String race_color;
+    private String raceColor;
+
+
+	public ScholarshipHolders(Customers customers, String fullName, Date dateOfBirth, boolean needs, String cpf,
+			String raceColor) {
+		this.customers = customers;
+		this.fullName = fullName;
+		this.dateOfBirth = dateOfBirth;
+		this.needs = needs;
+		this.cpf = cpf;
+		this.raceColor = raceColor;
+	}
 
 	public Integer getId() {
 		return id;
@@ -47,20 +58,28 @@ public class ScholarshipHolders {
 		this.id = id;
 	}
 
-	public String getFull_name() {
-		return full_name;
+	public Customers getCustomers() {
+		return customers;
 	}
 
-	public void setFull_name(String full_name) {
-		this.full_name = full_name;
+	public void setCustomers(Customers customers) {
+		this.customers = customers;
 	}
 
-	public Date getDate_of_birth() {
-		return date_of_birth;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setDate_of_birth(Date date_of_birth) {
-		this.date_of_birth = date_of_birth;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public boolean isNeeds() {
@@ -79,30 +98,12 @@ public class ScholarshipHolders {
 		this.cpf = cpf;
 	}
 
-	public String getRace_color() {
-		return race_color;
+	public String getRaceColor() {
+		return raceColor;
 	}
 
-	public void setRace_color(String race_color) {
-		this.race_color = race_color;
-	}
-
-	public Customers getCustomers() {
-		return customers;
-	}
-
-	public void setCustomers(Customers customers) {
-		this.customers = customers;
-	}
-	
-	public ScholarshipHolders(Customers customers, String full_name, Date date_of_birth, boolean needs, String cpf,
-			String race_color) {
-		this.customers = customers;
-		this.full_name = full_name;
-		this.date_of_birth = date_of_birth;
-		this.needs = needs;
-		this.cpf = cpf;
-		this.race_color = race_color;
+	public void setRaceColor(String raceColor) {
+		this.raceColor = raceColor;
 	}
 
 	public ScholarshipHolders() {}

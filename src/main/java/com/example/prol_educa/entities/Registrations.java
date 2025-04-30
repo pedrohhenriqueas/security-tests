@@ -29,7 +29,7 @@ public class Registrations {
     private Courses courses;
     
     @Column(name = "data_inscricao")
-    private Date registration_date;
+    private Date registrationDate;
     
     @Column(name = "status")
     private String status;
@@ -58,14 +58,6 @@ public class Registrations {
 		this.courses = courses;
 	}
 
-	public Date getRegistration_date() {
-		return registration_date;
-	}
-
-	public void setRegistration_date(Date registration_date) {
-		this.registration_date = registration_date;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -74,11 +66,19 @@ public class Registrations {
 		this.status = status;
 	}
 
-	public Registrations(ScholarshipHolders scholarshipHolders, Courses courses, Date registration_date,
-			String status) {
+	public Date getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
+	public Registrations(ScholarshipHolders scholarshipHolders, Courses courses, Date registrationDate, String status) {
+		super();
 		this.scholarshipHolders = scholarshipHolders;
 		this.courses = courses;
-		this.registration_date = registration_date;
+		this.registrationDate = registrationDate;
 		this.status = status;
 	}
 

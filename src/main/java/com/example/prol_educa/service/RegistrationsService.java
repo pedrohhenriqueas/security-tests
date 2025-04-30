@@ -26,10 +26,10 @@ public class RegistrationsService {
 	
 	public void create(RegistrationsDto dto) throws Exception {
 		Registrations registrations = new Registrations();
-		ScholarshipHolders scholarshipHolder = scholarshipHoldersService.findById(dto.getScholarshipHolders());
-		Courses course = coursesService.findById(dto.getCourses());
+		ScholarshipHolders scholarshipHolder = scholarshipHoldersService.findById(dto.getScholarshipHolderId());
+		Courses course = coursesService.findById(dto.getCourseId());
 		
-		registrations.setRegistration_date(dto.getRegistration_date());
+		registrations.setRegistrationDate(dto.getRegistrationDate());
 		registrations.setStatus(dto.getStatus());
 		registrations.setScholarshipHolders(scholarshipHolder);
 		registrations.setCourses(course);
@@ -51,10 +51,10 @@ public class RegistrationsService {
 	
 	public Registrations update(Integer id, RegistrationsDto dto) throws Exception {
 		Registrations registrations = findById(id);
-		ScholarshipHolders scholarshipHolder = scholarshipHoldersService.findById(dto.getScholarshipHolders());
-		Courses course = coursesService.findById(dto.getCourses());
+		ScholarshipHolders scholarshipHolder = scholarshipHoldersService.findById(dto.getScholarshipHolderId());
+		Courses course = coursesService.findById(dto.getCourseId());
 		
-		registrations.setRegistration_date(dto.getRegistration_date());
+		registrations.setRegistrationDate(dto.getRegistrationDate());
 		registrations.setStatus(dto.getStatus());
 		registrations.setScholarshipHolders(scholarshipHolder);
 		registrations.setCourses(course);

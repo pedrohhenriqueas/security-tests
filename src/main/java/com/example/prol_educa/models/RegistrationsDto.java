@@ -5,51 +5,41 @@ import java.sql.Date;
 
 public class RegistrationsDto {
 
-    private Integer scholarshipHolder_id;
-    private Integer course_id;
-    private Date registration_date;
+    private Integer scholarshipHolderId;
+    private Integer courseId;
+    private Date registrationDate;
     private String status;
-
-	public Integer getScholarshipHolders() {
-		return scholarshipHolder_id;
+	public Integer getScholarshipHolderId() {
+		return scholarshipHolderId;
 	}
-
-	public void setScholarshipHolders(Integer scholarshipHolder_id) {
-		this.scholarshipHolder_id = scholarshipHolder_id;
+	public void setScholarshipHolderId(Integer scholarshipHolderId) {
+		this.scholarshipHolderId = scholarshipHolderId;
 	}
-
-	public Integer getCourses() {
-		return course_id;
+	public Integer getCourseId() {
+		return courseId;
 	}
-
-	public void setCourses(Integer course_id) {
-		this.course_id = course_id;
+	public void setCourseId(Integer courseId) {
+		this.courseId = courseId;
 	}
-
-	public Date getRegistration_date() {
-		return registration_date;
+	public Date getRegistrationDate() {
+		return registrationDate;
 	}
-
-	public void setRegistration_date(Date registration_date) {
-		this.registration_date = registration_date;
+	public void setRegistrationDate(Date registrationDate) {
+		this.registrationDate = registrationDate;
 	}
-
 	public String getStatus() {
 		return status;
 	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	public RegistrationsDto(Integer scholarshipHolder_id, Integer course_id, Date registration_date,
-			String status) {
-		this.scholarshipHolder_id = scholarshipHolder_id;
-		this.course_id = course_id;
-		this.registration_date = registration_date;
+	public RegistrationsDto(Integer scholarshipHolderId, Integer courseId, Date registrationDate, String status) {
+		this.scholarshipHolderId = scholarshipHolderId;
+		this.courseId = courseId;
+		this.registrationDate = registrationDate;
 		this.status = status;
 	}
-
 	public RegistrationsDto() {
 	}
+    
 }

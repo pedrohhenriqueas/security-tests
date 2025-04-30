@@ -27,11 +27,11 @@ public class InstitutionsService {
 		institution.setCity(dto.getCity());
 		institution.setState(dto.getState());
 		institution.setCep(dto.getCep());
-		institution.setName_responsible(dto.getName_responsible());
-		institution.setCell_responsible(dto.getCell_responsible());
-		institution.setEmail_responsible(dto.getEmail_responsible());
+		institution.setNameResponsible(dto.getNameResponsible());
+		institution.setCellResponsible(dto.getCellResponsible());
+		institution.setEmailResponsible(dto.getEmailResponsible());
 		institution.setType(dto.getType());
-		institution.setUrl_image(dto.getUrl_image());
+		institution.setUrlImage(dto.getUrlImage());
 		institution.setStatus(dto.isStatus()); 
 		
 		repository.save(institution);
@@ -60,11 +60,11 @@ public class InstitutionsService {
 		institution.setCity(dto.getCity());
 		institution.setState(dto.getState());
 		institution.setCep(dto.getCep());
-		institution.setName_responsible(dto.getName_responsible());
-		institution.setCell_responsible(dto.getCell_responsible());
-		institution.setEmail_responsible(dto.getEmail_responsible());
+		institution.setNameResponsible(dto.getNameResponsible());
+		institution.setCellResponsible(dto.getCellResponsible());
+		institution.setEmailResponsible(dto.getEmailResponsible());
 		institution.setType(dto.getType());
-		institution.setUrl_image(dto.getUrl_image());
+		institution.setUrlImage(dto.getUrlImage());
 		institution.setStatus(dto.isStatus()); 
 		
 		return repository.save(institution);

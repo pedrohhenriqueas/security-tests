@@ -43,7 +43,7 @@ public class Courses {
     private String shift;
 
     @Column(name = "imagem_url")
-    private String image_url;
+    private String imageUrl;
 
     @Column(name = "desconto_entrada")
     private BigDecimal discountEntrance;
@@ -78,7 +78,7 @@ public class Courses {
 	
 
 	public Courses(Institutions institutions, String name, Integer vacancies, BigDecimal percentageScholarship,
-			BigDecimal originalValue, BigDecimal discountValue, String shift, String image_url,
+			BigDecimal originalValue, BigDecimal discountValue, String shift, String imageUrl,
 			BigDecimal discountEntrance, boolean status) {
 		this.institutions = institutions;
 		this.name = name;
@@ -87,7 +87,7 @@ public class Courses {
 		this.originalValue = originalValue;
 		this.discountValue = discountValue;
 		this.shift = shift;
-		this.image_url = image_url;
+		this.imageUrl = imageUrl;
 		this.discountEntrance = discountEntrance;
 		this.status = status;
 	}
@@ -132,12 +132,12 @@ public class Courses {
 		this.shift = shift;
 	}
 
-	public String getImage_url() {
-		return image_url;
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	public void setImage_url(String image_url) {
-		this.image_url = image_url;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
 	public BigDecimal getDiscountEntrance() {

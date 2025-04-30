@@ -38,48 +38,26 @@ public class Institutions {
     private String cep;
     
     @Column(name = "responsavel_nome")
-    private String name_responsible;
+    private String nameResponsible;
     
     @Column(name = "responsavel_tel")
-    private String cell_responsible;
+    private String cellResponsible;
     
     @Column(name = "responsavel_email")
-    private String email_responsible;
+    private String emailResponsible;
     
     @Column(name = "tipo")
     private String type;
     
     @Column(name = "imagem_url")
-    private String url_image;
+    private String urlImage;
     
     @JsonIgnore
     private String password;
     
     @Column(name = "status")
     private boolean status;
-    
-	public Institutions(String name, String street, String number, String complement, String neighborhood, String city,
-			String state, String cep, String name_responsible, String cell_responsible, String email_responsible,
-			String type, String url_image, String password, boolean status) {
-		this.name = name;
-		this.street = street;
-		this.number = number;
-		this.complement = complement;
-		this.neighborhood = neighborhood;
-		this.city = city;
-		this.state = state;
-		this.cep = cep;
-		this.name_responsible = name_responsible;
-		this.cell_responsible = cell_responsible;
-		this.email_responsible = email_responsible;
-		this.type = type;
-		this.url_image = url_image;
-		this.password = password;
-		this.status = status;
-	}
-	
-	public Institutions() {}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -123,7 +101,7 @@ public class Institutions {
 	public String getNeighborhood() {
 		return neighborhood;
 	}
-	
+
 	public void setNeighborhood(String neighborhood) {
 		this.neighborhood = neighborhood;
 	}
@@ -152,28 +130,28 @@ public class Institutions {
 		this.cep = cep;
 	}
 
-	public String getName_responsible() {
-		return name_responsible;
+	public String getNameResponsible() {
+		return nameResponsible;
 	}
 
-	public void setName_responsible(String name_responsible) {
-		this.name_responsible = name_responsible;
+	public void setNameResponsible(String nameResponsible) {
+		this.nameResponsible = nameResponsible;
 	}
 
-	public String getCell_responsible() {
-		return cell_responsible;
+	public String getCellResponsible() {
+		return cellResponsible;
 	}
 
-	public void setCell_responsible(String cell_responsible) {
-		this.cell_responsible = cell_responsible;
+	public void setCellResponsible(String cellResponsible) {
+		this.cellResponsible = cellResponsible;
 	}
 
-	public String getEmail_responsible() {
-		return email_responsible;
+	public String getEmailResponsible() {
+		return emailResponsible;
 	}
 
-	public void setEmail_responsible(String email_responsible) {
-		this.email_responsible = email_responsible;
+	public void setEmailResponsible(String emailResponsible) {
+		this.emailResponsible = emailResponsible;
 	}
 
 	public String getType() {
@@ -184,12 +162,12 @@ public class Institutions {
 		this.type = type;
 	}
 
-	public String getUrl_image() {
-		return url_image;
+	public String getUrlImage() {
+		return urlImage;
 	}
 
-	public void setUrl_image(String url_image) {
-		this.url_image = url_image;
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
 	}
 
 	public String getPassword() {
@@ -203,10 +181,33 @@ public class Institutions {
 	public boolean isStatus() {
 		return status;
 	}
-	
+
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-    
+
+	public Institutions(String name, String street, String number, String complement, String neighborhood, String city,
+			String state, String cep, String nameResponsible, String cellResponsible, String emailResponsible,
+			String type, String urlImage, String password, boolean status) {
+		this.name = name;
+		this.street = street;
+		this.number = number;
+		this.complement = complement;
+		this.neighborhood = neighborhood;
+		this.city = city;
+		this.state = state;
+		this.cep = cep;
+		this.nameResponsible = nameResponsible;
+		this.cellResponsible = cellResponsible;
+		this.emailResponsible = emailResponsible;
+		this.type = type;
+		this.urlImage = urlImage;
+		this.password = password;
+		this.status = status;
+	}
+
+	public Institutions() {
+	}
+    	
 }
 

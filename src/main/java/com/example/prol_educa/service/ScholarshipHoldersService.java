@@ -24,11 +24,11 @@ public class ScholarshipHoldersService {
 		ScholarshipHolders scholarshipHolders = new ScholarshipHolders();
 		Customers customer = customersService.findById(dto.getCustomers());
 		scholarshipHolders.setCustomers(customer);
-		scholarshipHolders.setFull_name(dto.getFull_name());
-		scholarshipHolders.setDate_of_birth(dto.getDate_of_birth());
+		scholarshipHolders.setFullName(dto.getFullName());
+		scholarshipHolders.setDateOfBirth(dto.getDateOfBirth());
 		scholarshipHolders.setNeeds(dto.isNeeds());
 		scholarshipHolders.setCpf(dto.getCpf());
-		scholarshipHolders.setRace_color(dto.getRace_color());
+		scholarshipHolders.setRaceColor(dto.getRaceColor());
 		
 		repository.save(scholarshipHolders);
 	}
@@ -50,11 +50,11 @@ public class ScholarshipHoldersService {
 		ScholarshipHolders scholarshipHolders = findById(id);
 		Customers customer = customersService.findById(dto.getCustomers());
 		scholarshipHolders.setCustomers(customer);
-		scholarshipHolders.setFull_name(dto.getFull_name());
-		scholarshipHolders.setDate_of_birth(dto.getDate_of_birth());
+		scholarshipHolders.setFullName(dto.getFullName());
+		scholarshipHolders.setDateOfBirth(dto.getDateOfBirth());
 		scholarshipHolders.setNeeds(dto.isNeeds());
 		scholarshipHolders.setCpf(dto.getCpf());
-		scholarshipHolders.setRace_color(dto.getRace_color());
+		scholarshipHolders.setRaceColor(dto.getRaceColor());
 		
 		return repository.save(scholarshipHolders);
 	}

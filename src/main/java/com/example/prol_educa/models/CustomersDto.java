@@ -5,20 +5,19 @@ import java.sql.Date;
 
 public class CustomersDto {
 
-    private String full_name;
+    private String fullName;
     private String email;
     private String phone;
     private String cpf;
-    private Date date_of_birth;
+    private Date dateOfBirth;
     private boolean status;
 
-
-	public String getFull_name() {
-		return full_name;
+	public String getFullName() {
+		return fullName;
 	}
 
-	public void setFull_name(String full_name) {
-		this.full_name = full_name;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String getEmail() {
@@ -45,12 +44,12 @@ public class CustomersDto {
 		this.cpf = cpf;
 	}
 
-	public Date getDate_of_birth() {
-		return date_of_birth;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public void setDate_of_birth(Date date_of_birth) {
-		this.date_of_birth = date_of_birth;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public boolean isStatus() {
@@ -61,14 +60,17 @@ public class CustomersDto {
 		this.status = status;
 	}
 
-	public CustomersDto(String full_name, String email, String phone, String cpf, Date date_of_birth, boolean status) {
-		this.full_name = full_name;
+	public CustomersDto() {}
+
+	public CustomersDto(String fullName, String email, String phone, String cpf, Date dateOfBirth, boolean status) {
+		this.fullName = fullName;
 		this.email = email;
 		this.phone = phone;
 		this.cpf = cpf;
-		this.date_of_birth = date_of_birth;
+		this.dateOfBirth = dateOfBirth;
 		this.status = status;
 	}
 
-	public CustomersDto() {}
+	
+
 }
