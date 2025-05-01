@@ -14,7 +14,16 @@ public class CoursesDto {
     private String imageUrl;
     private BigDecimal discountEntrance;
     private boolean status;
+    private String description;
     
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public Integer getInstitutionsId() {
 		return institutionsId;
 	}
@@ -94,10 +103,11 @@ public class CoursesDto {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+
 	public CoursesDto(Integer institutionsId, String name, Integer vacancies, BigDecimal percentageScholarship,
 			BigDecimal originalValue, BigDecimal discountValue, String shift, String imageUrl,
-			BigDecimal discountEntrance, boolean status) {
+			BigDecimal discountEntrance, boolean status, String description) {
+		super();
 		this.institutionsId = institutionsId;
 		this.name = name;
 		this.vacancies = vacancies;
@@ -108,6 +118,7 @@ public class CoursesDto {
 		this.imageUrl = imageUrl;
 		this.discountEntrance = discountEntrance;
 		this.status = status;
+		this.description = description;
 	}
 
 	public CoursesDto() {}

@@ -50,6 +50,9 @@ public class Courses {
 
     @Column(name = "status")
     private boolean status;
+    
+    @Column(name = "descricao")
+    public String description;
 
 	public Integer getId() {
 		return id;
@@ -73,23 +76,6 @@ public class Courses {
 
 	public void setVacancies(Integer vacancies) {
 		this.vacancies = vacancies;
-	}
-
-	
-
-	public Courses(Institutions institutions, String name, Integer vacancies, BigDecimal percentageScholarship,
-			BigDecimal originalValue, BigDecimal discountValue, String shift, String imageUrl,
-			BigDecimal discountEntrance, boolean status) {
-		this.institutions = institutions;
-		this.name = name;
-		this.vacancies = vacancies;
-		this.percentageScholarship = percentageScholarship;
-		this.originalValue = originalValue;
-		this.discountValue = discountValue;
-		this.shift = shift;
-		this.imageUrl = imageUrl;
-		this.discountEntrance = discountEntrance;
-		this.status = status;
 	}
 
 	public Institutions getInstitutions() {
@@ -154,6 +140,31 @@ public class Courses {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Courses(Institutions institutions, String name, Integer vacancies, BigDecimal percentageScholarship,
+			BigDecimal originalValue, BigDecimal discountValue, String shift, String imageUrl,
+			BigDecimal discountEntrance, boolean status, String description) {
+		super();
+		this.institutions = institutions;
+		this.name = name;
+		this.vacancies = vacancies;
+		this.percentageScholarship = percentageScholarship;
+		this.originalValue = originalValue;
+		this.discountValue = discountValue;
+		this.shift = shift;
+		this.imageUrl = imageUrl;
+		this.discountEntrance = discountEntrance;
+		this.status = status;
+		this.description = description;
 	}
 
 	public Courses() {}

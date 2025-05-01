@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS public.cursos
     status boolean,
     vagas integer,
     instituicao_id integer,
+    descricao text,
     CONSTRAINT cursos_pkey PRIMARY KEY (id)
 );
 

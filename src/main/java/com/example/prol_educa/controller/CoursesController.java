@@ -1,6 +1,9 @@
 package com.example.prol_educa.controller;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.prol_educa.entities.Courses;
@@ -52,4 +56,37 @@ public class CoursesController {
 		service.delete(id);
 		return ResponseEntity.ok("Curso deletado com sucesso");
 	}
+	
+	@GetMapping("/findByName")
+	public ResponseEntity<?> findByName(@RequestParam("name") String name){
+		return ResponseEntity.ok(service.findByName(name));
+	}
+	
+	@GetMapping("/findByInstitution")
+	public ResponseEntity<?> findByInstitution(@RequestParam("institutionName") String institutionName){
+		return ResponseEntity.ok(service.findByInstituitions_Name(institutionName));
+	}
+	
+	@GetMapping("/findByPercentageScholarship")
+	public ResponseEntity<?> findByPercentageScholarship(@RequestParam("percentageScholarship") BigDecimal percentageScholarship){
+		return ResponseEntity.ok(service.findByPercentageScholarship(percentageScholarship));
+	}
+	
+	@GetMapping("/filter")
+	public ResponseEntity<?> findByFilter(
+			 @RequestParam(required = false) String name,
+	         @RequestParam(required = false) String institutions,
+	         @RequestParam(required = false) String shift,
+	         @RequestParam(required = false) String minPercentageScholarship){
+		Map<String, String> filters = new HashMap<>();
+
+        if (name != null) filters.put("name", name);
+        if (institutions != null) filters.put("institutions", institutions);
+        if (shift != null) filters.put("shift", shift);
+        if (minPercentageScholarship != null) filters.put("minPercentageScholarship", minPercentageScholarship);
+
+        List<Courses> result = service.filter(filters);
+        return ResponseEntity.ok(result);
+	}
+	
 }

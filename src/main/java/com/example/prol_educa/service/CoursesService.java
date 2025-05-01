@@ -2,9 +2,11 @@ package com.example.prol_educa.service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.example.prol_educa.entities.Courses;
@@ -34,6 +36,7 @@ public class CoursesService {
 		course.setImageUrl(dto.getImageUrl());
 		course.setDiscountEntrance(dto.getDiscountEntrance());
 		course.setStatus(dto.isStatus());
+		course.setDescription(dto.getDescription());
 		
 		repository.save(course);
 	}
@@ -64,7 +67,8 @@ public class CoursesService {
 		course.setImageUrl(dto.getImageUrl());
 		course.setDiscountEntrance(dto.getDiscountEntrance());
 		course.setStatus(dto.isStatus());
-		
+		course.setDescription(dto.getDescription());
+
 		return repository.save(course);
 	}
 	
@@ -82,13 +86,50 @@ public class CoursesService {
 		return courses;
 	}
 	
-	public List<Courses> findByPercentage_scholarship(BigDecimal percentage){
+	public List<Courses> findByPercentageScholarship(BigDecimal percentage){
 		List<Courses> courses = repository.findByPercentageScholarship(percentage);
 		return courses;
 	}
 	
-	public List<Courses> findByInstituitions_id(Integer id){
-		List<Courses> course = repository.findByInstitutions_Id(id);
+	public List<Courses> findByInstituitions_Name(String name){
+		List<Courses> course = repository.findByInstitutions_Name(name);
 		return course;
+	}
+	
+	public List<Courses> filter(Map<String, String> filters){
+		Specification<Courses> specification = Specification.where(null);
+		
+		  for (Map.Entry<String, String> entry : filters.entrySet()) {
+			  
+	          String key = entry.getKey();
+	          String value = entry.getValue();
+	            
+	          specification = specification.and((root, query, criteriaBuilder) -> {
+	        	  
+	            switch (key) {  
+	            	case "name":
+	                    return criteriaBuilder.like(criteriaBuilder.lower(root.get("name")), "%" + value.toLowerCase() + "%");
+
+	                case "institutions":
+	                    return criteriaBuilder.like(criteriaBuilder.lower(root.get("institutions").get("name")), "%" + value.toLowerCase() + "%");
+
+	                case "shift":
+	                    return criteriaBuilder.equal(criteriaBuilder.lower(root.get("shift")), value.toLowerCase());
+
+	                case "minPercentageScholarship":
+	                    try {
+	                        BigDecimal minDiscount = new BigDecimal(value);
+	                        return criteriaBuilder.greaterThanOrEqualTo(root.get("percentageScholarship"), minDiscount);
+	                    } catch (NumberFormatException e) {
+	                        throw new IllegalArgumentException("Desconto mínimo inválido: " + value);
+	                    }
+                        
+                    default:
+                        throw new IllegalArgumentException("Campo de filtro inválido: " + key);
+            	}
+            });
+		  }
+		  
+		return repository.findAll(specification);
 	}
 }
