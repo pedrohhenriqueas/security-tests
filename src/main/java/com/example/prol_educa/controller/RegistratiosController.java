@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +26,15 @@ public class RegistratiosController {
 	public RegistrationsService service;
 
 	@PostMapping("/create")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> create(@RequestBody RegistrationsDto dto) throws Exception{
+		System.out.println();		
+		System.out.println();
+		System.out.println();
+		System.out.println(dto.getScholarshipHolderId());
+		System.out.println();
+		System.out.println();
+		System.out.println();
 		service.create(dto);
 		return ResponseEntity.ok("Registro criado com sucesso");
 	}
@@ -36,11 +45,13 @@ public class RegistratiosController {
 	}
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Registrations> findById(@PathVariable("id") Integer id) throws Exception{
 		return ResponseEntity.ok(service.findById(id));
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> update(@PathVariable("id") Integer id,
 									@RequestBody RegistrationsDto dto) throws Exception{
 		service.update(id, dto);
@@ -48,6 +59,7 @@ public class RegistratiosController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> delete(@PathVariable("id") Integer id){
 		service.delete(id);
 		return ResponseEntity.ok("Registro deletado com sucesso");

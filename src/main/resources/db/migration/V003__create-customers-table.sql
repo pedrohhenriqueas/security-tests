@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS public.clientes
     nome_completo character varying(255) COLLATE pg_catalog."default",
     telefone character varying(255) COLLATE pg_catalog."default",
     status boolean,
+    password character varying(255) COLLATE pg_catalog."default",
     CONSTRAINT clientes_pkey PRIMARY KEY (id),
     CONSTRAINT uk7wflw78ibh162cmq12ii6ffly UNIQUE (cpf)
 );

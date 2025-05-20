@@ -16,7 +16,14 @@ public class InstitutionsDto {
     private String type;
     private String urlImage;
     private boolean status;
+    private String password;
     
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getName() {
 		return name;
 	}
@@ -103,7 +110,7 @@ public class InstitutionsDto {
 	}
 	public InstitutionsDto(String name, String street, String number, String complement, String neighborhood,
 			String city, String state, String cep, String nameResponsible, String cellResponsible,
-			String emailResponsible, String type, String urlImage, boolean status) {
+			String emailResponsible, String type, String urlImage, boolean status, String password) {
 		this.name = name;
 		this.street = street;
 		this.number = number;
@@ -118,6 +125,7 @@ public class InstitutionsDto {
 		this.type = type;
 		this.urlImage = urlImage;
 		this.status = status;
+		this.password = password;
 	}
 	public InstitutionsDto() {
 	}

@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.prol_educa.entities.Customers;
+import com.example.prol_educa.exception.ConflictException;
 import com.example.prol_educa.models.CustomersDto;
 import com.example.prol_educa.repository.CustomersRepository;
 
@@ -15,8 +17,17 @@ public class CustomersService {
 
 	@Autowired
 	public CustomersRepository repository;
+
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	
 	public void create(CustomersDto dto) {
+
+        if (repository.findByEmail(dto.getEmail()).isPresent()) {
+            throw new ConflictException("Error: Email is already in use!");
+        }
+
 		Customers customer = new Customers();
 		customer.setFullName(dto.getFullName());
 		customer.setEmail(dto.getEmail());
@@ -24,7 +35,8 @@ public class CustomersService {
 		customer.setCpf(dto.getCpf());
 		customer.setDate_of_birth(dto.getDateOfBirth());
 		customer.setStatus(dto.isStatus());
-		
+		customer.setPassword(passwordEncoder.encode(dto.getPassword()));
+		// customer.setRoles();
 		repository.save(customer);
 	}
 	
@@ -48,12 +60,21 @@ public class CustomersService {
 		customer.setPhone(dto.getPhone());
 		customer.setCpf(dto.getCpf());
 		customer.setDate_of_birth(dto.getDateOfBirth());
-		customer.setStatus(dto.isStatus());
+		customer.setStatus(true);
 		
 		return repository.save(customer);
 	}
 	
 	public void delete(Integer id) {
 		repository.deleteById(id);
+	}
+
+	public Customers findByEmail(String email) throws Exception{
+		Optional<Customers> customer = repository.findByEmail(email);
+		if(!customer.isPresent()) {
+			throw new Exception("Cliente não encontrado");
+		}
+
+		return customer.get();
 	}
 }

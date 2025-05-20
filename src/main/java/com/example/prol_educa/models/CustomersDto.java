@@ -11,6 +11,15 @@ public class CustomersDto {
     private String cpf;
     private Date dateOfBirth;
     private boolean status;
+    private String password;
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public String getFullName() {
 		return fullName;
@@ -62,15 +71,14 @@ public class CustomersDto {
 
 	public CustomersDto() {}
 
-	public CustomersDto(String fullName, String email, String phone, String cpf, Date dateOfBirth, boolean status) {
+	public CustomersDto(String fullName, String email, String phone, String cpf, Date dateOfBirth, boolean status, String password) {
 		this.fullName = fullName;
 		this.email = email;
 		this.phone = phone;
 		this.cpf = cpf;
 		this.dateOfBirth = dateOfBirth;
 		this.status = status;
+		this.password = password;
 	}
-
-	
 
 }
