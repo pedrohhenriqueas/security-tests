@@ -36,7 +36,6 @@ public class CoursesController {
 	}
 	
 	@GetMapping
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<List<Courses>> findAll(){
 		return ResponseEntity.ok(service.findAll());
 	}
@@ -82,18 +81,21 @@ public class CoursesController {
 	//cliente
 	//adicioonar cidade e categoria
 	@GetMapping("/filter")
-	@PreAuthorize("hasRole('ADMIN', 'USER')")
 	public ResponseEntity<?> findByFilter(
-			 @RequestParam(required = false) String name,
-	         @RequestParam(required = false) String institutions,
-	         @RequestParam(required = false) String shift,
-	         @RequestParam(required = false) String minPercentageScholarship){
+			@RequestParam(required = false) String name,
+	        @RequestParam(required = false) String institutions,
+	        @RequestParam(required = false) String shift,
+	        @RequestParam(required = false) String minPercentageScholarship,
+			@RequestParam(required = false) String city,
+	        @RequestParam(required = false) String category){
 		Map<String, String> filters = new HashMap<>();
 
         if (name != null) filters.put("name", name);
         if (institutions != null) filters.put("institutions", institutions);
         if (shift != null) filters.put("shift", shift);
         if (minPercentageScholarship != null) filters.put("minPercentageScholarship", minPercentageScholarship);
+        if (city != null) filters.put("city", city);
+        if (category != null) filters.put("category", category);
 
         List<Courses> result = service.filter(filters);
         return ResponseEntity.ok(result);

@@ -1,8 +1,6 @@
 package com.example.prol_educa.security.services;
 
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,31 +23,32 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	AdministratorsRepository administratorsRepository;
 	
 	public UserDetails loadCustomerByEmail(String email) throws UsernameNotFoundException{
-		Customers customer = customerRepository.findByEmail(email)
-        	.orElseThrow(() -> new UsernameNotFoundException("Customer Not Found with email: " + email));
-        	
+		Customers customer = customerRepository.findByEmail(email);
+		if(customer == null)
+			throw new UsernameNotFoundException("Customer Not Found with email: " + email);
+		    	
 		return UserDetailsImpl.build(customer);
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<Customers> customerOpt = customerRepository.findByEmail(email);
-        if (customerOpt.isPresent()) {
-            return UserDetailsImpl.build(customerOpt.get());
-        }
+        Customers customer = customerRepository.findByEmail(email);
+        if (customer != null) 
+            return UserDetailsImpl.build(customer);
+        
 
         // Depois tenta como administrador
-        Optional<Administrators> adminOpt = administratorsRepository.findByEmail(email);
-        if (adminOpt.isPresent()) {
-            return UserDetailsImpl.build(adminOpt.get());
-        }
+        Administrators admin = administratorsRepository.findByEmail(email);
+        if (admin != null)
+            return UserDetailsImpl.build(admin);
 
 		throw new UsernameNotFoundException("User not found with email: " + email);
 	}
 
 	public UserDetails loadAdminByEmail(String email) throws UsernameNotFoundException {
-		Administrators admin = administratorsRepository.findByEmail(email)
-			.orElseThrow(() -> new UsernameNotFoundException("Admin Not Found with email: " + email));
+		Administrators admin = administratorsRepository.findByEmail(email);
+		if (admin == null)
+			throw new UsernameNotFoundException("Admin Not Found with email: " + email);			
 
 		return UserDetailsImpl.build(admin);
 	}

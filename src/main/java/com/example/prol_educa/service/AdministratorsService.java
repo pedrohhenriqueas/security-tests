@@ -32,8 +32,9 @@ public class AdministratorsService {
 		administrator.setEmail(dto.getEmail());
 		administrator.setPassword(passwordEncoder.encode(dto.getPassword()));
 
-		Roles adminRole = rolesRepository.findByType(ERoles.ROLE_ADMIN)
-        .orElseThrow(() -> new RuntimeException("Error: Role ADMIN not found."));
+		Roles adminRole = rolesRepository.findByType(ERoles.ROLE_ADMIN);
+		if(adminRole == null)
+        	throw new RuntimeException("Error: Role ADMIN not found.");
 		
 		administrator.getRoles().add(adminRole);
 		

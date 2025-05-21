@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,13 +25,21 @@ public class CustomersController {
 	@Autowired
 	public CustomersService service;
 	
+
 	@PostMapping("/create")
-	public ResponseEntity<?> create(@RequestBody CustomersDto dto){
+	public ResponseEntity<?> create(@RequestBody CustomersDto dto) throws Exception{
+
+		if (service.findByEmail(dto.getEmail()) != null) 
+			return ResponseEntity.badRequest().body("Email já está em uso");
+		if (service.findByCpf(dto.getCpf()) != null) 
+			return ResponseEntity.badRequest().body("Cpf já esstá cadastrado");
+            
 		service.create(dto);
 		return ResponseEntity.ok("Cliente cadastrado com sucesso");
 	}
 	
 	@GetMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> findAll(){
 		List<Customers> customers = service.findAll();
 		
@@ -38,11 +47,13 @@ public class CustomersController {
 	}
 	
 	@GetMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> findById(@PathVariable("id") Integer id) throws Exception{
 		return ResponseEntity.ok(service.findById(id));
 	}
 	
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> update(@PathVariable("id") Integer id,
 									@RequestBody CustomersDto dto) throws Exception{
 		service.update(id, dto);
@@ -50,6 +61,7 @@ public class CustomersController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> delete(@PathVariable("id") Integer id){
 		service.delete(id);
 		return ResponseEntity.ok("Cliente deletado com sucesso");

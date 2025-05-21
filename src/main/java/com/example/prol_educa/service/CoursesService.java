@@ -123,6 +123,13 @@ public class CoursesService {
 	                    } catch (NumberFormatException e) {
 	                        throw new IllegalArgumentException("Desconto mínimo inválido: " + value);
 	                    }
+
+	                case "city":
+	                    return criteriaBuilder.like(criteriaBuilder.lower(root.get("city")), value.toLowerCase());
+
+	                case "category":
+	                    return criteriaBuilder.like(criteriaBuilder.lower(root.get("category")), value.toLowerCase());
+
                         
                     default:
                         throw new IllegalArgumentException("Campo de filtro inválido: " + key);

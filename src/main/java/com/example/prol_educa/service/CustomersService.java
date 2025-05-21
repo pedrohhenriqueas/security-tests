@@ -8,9 +8,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.prol_educa.entities.Customers;
-import com.example.prol_educa.exception.ConflictException;
+import com.example.prol_educa.entities.Roles;
 import com.example.prol_educa.models.CustomersDto;
 import com.example.prol_educa.repository.CustomersRepository;
+import com.example.prol_educa.repository.RolesRepository;
+import com.example.prol_educa.utils.enuns.ERoles;
 
 @Service
 public class CustomersService {
@@ -20,14 +22,12 @@ public class CustomersService {
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
+
+	@Autowired
+	public RolesRepository rolesRepository;
 	
 	
 	public void create(CustomersDto dto) {
-
-        if (repository.findByEmail(dto.getEmail()).isPresent()) {
-            throw new ConflictException("Error: Email is already in use!");
-        }
-
 		Customers customer = new Customers();
 		customer.setFullName(dto.getFullName());
 		customer.setEmail(dto.getEmail());
@@ -36,7 +36,11 @@ public class CustomersService {
 		customer.setDate_of_birth(dto.getDateOfBirth());
 		customer.setStatus(dto.isStatus());
 		customer.setPassword(passwordEncoder.encode(dto.getPassword()));
-		// customer.setRoles();
+		Roles userRoles = rolesRepository.findByType(ERoles.ROLE_USER);
+		if (userRoles == null) 
+			throw new RuntimeException("Error: Role USER not found.");
+
+		customer.getRoles().add(userRoles);
 		repository.save(customer);
 	}
 	
@@ -69,12 +73,11 @@ public class CustomersService {
 		repository.deleteById(id);
 	}
 
-	public Customers findByEmail(String email) throws Exception{
-		Optional<Customers> customer = repository.findByEmail(email);
-		if(!customer.isPresent()) {
-			throw new Exception("Cliente não encontrado");
-		}
+	public Customers findByEmail(String email){
+		return repository.findByEmail(email);
+	}
 
-		return customer.get();
+	public Customers findByCpf(String cpf){
+		return repository.findByCpf(cpf);
 	}
 }

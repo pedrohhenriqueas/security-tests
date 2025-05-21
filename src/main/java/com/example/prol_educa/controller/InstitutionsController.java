@@ -27,7 +27,7 @@ public class InstitutionsController {
 	public InstitutionsService service;
 
 	@PostMapping("/create")
-	// @PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> create(@RequestBody InstitutionsDto dto) {
 		service.create(dto);
 		return ResponseEntity.ok("Cadastro da instituicao realizado com sucesso!");

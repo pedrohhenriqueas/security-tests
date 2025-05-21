@@ -28,18 +28,12 @@ public class RegistratiosController {
 	@PostMapping("/create")
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> create(@RequestBody RegistrationsDto dto) throws Exception{
-		System.out.println();		
-		System.out.println();
-		System.out.println();
-		System.out.println(dto.getScholarshipHolderId());
-		System.out.println();
-		System.out.println();
-		System.out.println();
 		service.create(dto);
 		return ResponseEntity.ok("Registro criado com sucesso");
 	}
 	
 	@GetMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<List<Registrations>> findAll(){
 		return ResponseEntity.ok(service.findAll());
 	}
