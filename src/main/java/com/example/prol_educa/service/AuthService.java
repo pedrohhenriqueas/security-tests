@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,9 +27,6 @@ public class AuthService {
 
     @Autowired
     private JwtUtils jwtUtils;
-
-    @Value("${app.refreshExpiration}")
-	private Long refreshExpiration;
 
     public JwtResponse authenticateUser(LoginRequestDto dto) throws Exception{
         Authentication authentication = authenticationManager.authenticate(
