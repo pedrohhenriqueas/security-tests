@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.prol_educa.entities.ScholarshipHolders;
+import com.example.prol_educa.models.ScholarshipHoldersCreationResponseDTO;
 import com.example.prol_educa.models.ScholarshipHoldersDto;
 import com.example.prol_educa.service.ScholarshipHoldersService;
 
@@ -29,8 +30,10 @@ public class ScholarshipHoldersController {
 	@PostMapping("/create")
 	@PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
 	public ResponseEntity<?> create(@RequestBody ScholarshipHoldersDto dto) throws Exception{
-		service.create(dto);
-		return ResponseEntity.ok("Cadastro do bolsista feito com sucesso");
+		ScholarshipHolders scholarshipHolders = service.create(dto);
+		ScholarshipHoldersCreationResponseDTO response = new ScholarshipHoldersCreationResponseDTO("Cadastro do bolsista feito com sucesso", scholarshipHolders.getId());
+
+		return ResponseEntity.ok(response);
 	}
 	
 	@GetMapping

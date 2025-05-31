@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.prol_educa.entities.Customers;
 import com.example.prol_educa.models.JwtResponse;
 import com.example.prol_educa.models.LoginRequestDto;
 import com.example.prol_educa.security.jwt.JwtUtils;
@@ -26,6 +27,9 @@ public class AuthService {
     private AuthenticationManager authenticationManager;
 
     @Autowired
+    private CustomersService customersService;
+
+    @Autowired
     private JwtUtils jwtUtils;
 
     public JwtResponse authenticateUser(LoginRequestDto dto) throws Exception{
@@ -39,8 +43,17 @@ public class AuthService {
         List<String> roles = userDetails.getAuthorities()
             .stream().map(item -> item.getAuthority())
             .collect(Collectors.toList());
+
+        int customerId = 0;
+
+        if (roles.contains("ROLE_USER")) {
+            Customers customer = customersService.findByEmail(dto.getEmail());
+            if (customer != null) {
+                customerId = customer.getId();
+            }
+        }
         
-        return new JwtResponse(jwt, roles);
+        return new JwtResponse(jwt, roles, customerId);
     }
 	
 }

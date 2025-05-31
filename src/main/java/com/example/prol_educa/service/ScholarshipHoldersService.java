@@ -20,7 +20,7 @@ public class ScholarshipHoldersService {
 	@Autowired
 	public CustomersService customersService;
 	
-	public void create(ScholarshipHoldersDto dto) throws Exception {
+	public ScholarshipHolders create(ScholarshipHoldersDto dto) throws Exception {
 		ScholarshipHolders scholarshipHolders = new ScholarshipHolders();
 		Customers customer = customersService.findById(dto.getCustomers());
 		scholarshipHolders.setCustomers(customer);
@@ -30,7 +30,7 @@ public class ScholarshipHoldersService {
 		scholarshipHolders.setCpf(dto.getCpf());
 		scholarshipHolders.setRaceColor(dto.getRaceColor());
 		
-		repository.save(scholarshipHolders);
+		return repository.save(scholarshipHolders);
 	}
 	
 	public List<ScholarshipHolders> findAll(){

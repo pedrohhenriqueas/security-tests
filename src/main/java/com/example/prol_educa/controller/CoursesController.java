@@ -41,7 +41,6 @@ public class CoursesController {
 	}
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Courses> findById(@PathVariable("id") Integer id) throws Exception{
 		return ResponseEntity.ok(service.findById(id));
 	}
