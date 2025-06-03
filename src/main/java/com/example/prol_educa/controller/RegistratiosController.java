@@ -26,26 +26,22 @@ public class RegistratiosController {
 	public RegistrationsService service;
 
 	@PostMapping("/create")
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> create(@RequestBody RegistrationsDto dto) throws Exception{
 		service.create(dto);
 		return ResponseEntity.ok("Registro criado com sucesso");
 	}
 	
 	@GetMapping
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<List<Registrations>> findAll(){
 		return ResponseEntity.ok(service.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Registrations> findById(@PathVariable("id") Integer id) throws Exception{
 		return ResponseEntity.ok(service.findById(id));
 	}
 	
 	@PutMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> update(@PathVariable("id") Integer id,
 									@RequestBody RegistrationsDto dto) throws Exception{
 		service.update(id, dto);

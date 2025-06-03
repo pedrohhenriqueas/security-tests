@@ -58,7 +58,6 @@ public class ScholarshipHoldersController {
 	
 	//cliente
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN', 'USER')")
 	public ResponseEntity<?> delete(@PathVariable("id") Integer id){
 		service.delete(id);
 		return ResponseEntity.ok("Bolsista deletado com sucesso");
