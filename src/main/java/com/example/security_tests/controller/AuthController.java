@@ -24,7 +24,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> signin(@RequestBody LoginRequestDto dto) throws Exception{
+    public ResponseEntity<Object> signin(@RequestBody LoginRequestDto dto) {
 
         if(dto.getEmail() == null || dto.getPassword() == null)
             return ResponseEntity.badRequest().body("Email ou senhas inválidos");
