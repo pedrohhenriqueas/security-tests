@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>prol-educa</artifactId>
+	<artifactId>security-tests</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>prol-educa</name>
-	<description>Backend do projeto do Take Off da Residência Tecnológica em parceria com a ProlEduca.</description>
+	<name>security-tests</name>
+	<description></description>
 	<url/>
 	<licenses>
 		<license/>
