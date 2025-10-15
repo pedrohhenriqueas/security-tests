@@ -2,7 +2,6 @@ package com.example.security_tests.service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,8 +34,8 @@ public class CustomersService {
 	public void create(CustomersDto dto) {
 		Customers customer = new Customers();
 		customer.setName(dto.getName());
-		customer.setEmail(dto.getEmail());
 		customer.setPassword(passwordEncoder.encode(dto.getPassword()));
+		customer.setEmail(dto.getEmail());
 		Roles userRoles = rolesRepository.findByType(ERoles.ROLE_USER);
 		if (userRoles == null) 
 			throw new NoSuchElementException("Error: Role USER not found.");
@@ -45,29 +44,8 @@ public class CustomersService {
 		repository.save(customer);
 	}
 	
-	public Customers findById(Integer id) {
-		Optional<Customers> customer = repository.findById(id);
-		if(!customer.isPresent()) {
-			throw new NoSuchElementException("Cliente não encontrado");
-		}
-		
-		return customer.get();
-	}
-	
 	public List<Customers> findAll(){
 		return repository.findAll();
-	}
-	
-	public Customers update(Integer id, CustomersDto dto) {
-		Customers customer = findById(id);
-		customer.setName(dto.getName());
-		customer.setEmail(dto.getEmail());
-		
-		return repository.save(customer);
-	}
-	
-	public void delete(Integer id) {
-		repository.deleteById(id);
 	}
 
 	public Customers findByEmail(String email){

@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.security_tests.models.JwtResponse;
 import com.example.security_tests.models.LoginRequestDto;
 import com.example.security_tests.service.AuthService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 
 @RestController
-@RequestMapping("/security")
+@RequestMapping("/login")
 public class AuthController {
 
     private final AuthService authService;
@@ -23,13 +24,14 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<Object> signin(@RequestBody LoginRequestDto dto) {
+    @PostMapping()
+    public ResponseEntity<Object> signin(@RequestBody LoginRequestDto dto, HttpServletRequest request) {
 
-        if(dto.getEmail() == null || dto.getPassword() == null)
+        if(dto.getName() == null || dto.getPassword() == null)
             return ResponseEntity.badRequest().body("Email ou senhas inválidos");
+        
+        String ip = request.getRemoteAddr();
 
-        JwtResponse jwtResponse = authService.authenticateUser(dto);
-        return ResponseEntity.ok(jwtResponse);
+        return authService.authenticateUser(dto, ip);
     }
 }

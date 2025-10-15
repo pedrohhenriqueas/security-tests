@@ -1,8 +1,5 @@
 package com.example.security_tests.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -43,31 +40,5 @@ public class AdministratorsService {
 		administrator.getRoles().add(adminRole);
 		
 		repository.save(administrator);
-	}
-	
-	public List<Administrators> findAll(){
-		return repository.findAll();
-	}
-	
-	public Administrators findById(Integer id) {
-		Optional<Administrators> administrator = repository.findById(id);
-		if(!administrator.isPresent())
-			throw new IllegalArgumentException("Administrador nao encontrado");
-		
-		
-		return administrator.get();
-	}
-	
-	public Administrators update(Integer id, AdministratorsDto dto) {
-		Administrators administrator = findById(id);
-		administrator.setName(dto.getName());
-		administrator.setEmail(dto.getEmail());
-		administrator.setPassword(dto.getPassword());
-		
-		return repository.save(administrator);
-	}
-	
-	public void delete(Integer id) {
-		repository.deleteById(id);
 	}
 }
