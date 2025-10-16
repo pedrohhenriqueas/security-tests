@@ -40,8 +40,6 @@ public class UserDetailsServiceImpl implements UserDetailsService{
         if (customer != null) 
             return UserDetailsImpl.build(customer);
         
-
-        // Depois tenta como administrador
         Administrators admin = administratorsRepository.findByEmail(email);
         if (admin != null)
             return UserDetailsImpl.build(admin);

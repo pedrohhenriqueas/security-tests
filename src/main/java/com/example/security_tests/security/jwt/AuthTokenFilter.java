@@ -47,7 +47,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 				try {
 					userDetails = userDetailsServiceImpl.loadCustomerByEmail(username);
 				} catch (UsernameNotFoundException e) {
-					// Tenta autenticar como Administrador
 					userDetails = userDetailsServiceImpl.loadAdminByEmail(username);
 				}
 				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
